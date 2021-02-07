@@ -1,0 +1,139 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://src/Screens/Background.png" type="Texture" id=1]
+[ext_resource path="res://src/UI/Evil Empire.otf" type="DynamicFontData" id=2]
+[ext_resource path="res://src/UI/ChangeSceneButton.tscn" type="PackedScene" id=3]
+[ext_resource path="res://src/Screens/TransitionOther.tscn" type="PackedScene" id=4]
+
+[sub_resource type="DynamicFont" id=1]
+size = 50
+font_data = ExtResource( 2 )
+
+[node name="LevelSelect" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Background" type="TextureRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 1 )
+stretch_mode = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LevelSelect" type="Label" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -113.0
+margin_top = 14.0
+margin_right = 119.0
+margin_bottom = 123.0
+custom_fonts/font = SubResource( 1 )
+text = "Level Select
+"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -144.0
+margin_top = -50.0
+margin_right = 150.0
+margin_bottom = -21.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ChangeSceneButton" parent="HBoxContainer" instance=ExtResource( 3 )]
+margin_right = 55.0
+margin_bottom = 29.0
+size_flags_horizontal = 3
+next_scene_path = "res://src/Levels/Level1x1.tscn"
+
+[node name="Label" parent="HBoxContainer/ChangeSceneButton" index="1"]
+text = "1"
+align = 1
+
+[node name="ChangeSceneButton2" parent="HBoxContainer" instance=ExtResource( 3 )]
+margin_left = 59.0
+margin_right = 114.0
+margin_bottom = 29.0
+size_flags_horizontal = 3
+next_scene_path = "res://src/Levels/Level1x2.tscn"
+
+[node name="Label" parent="HBoxContainer/ChangeSceneButton2" index="1"]
+text = "2"
+align = 1
+
+[node name="ChangeSceneButton3" parent="HBoxContainer" instance=ExtResource( 3 )]
+margin_left = 118.0
+margin_right = 173.0
+margin_bottom = 29.0
+size_flags_horizontal = 3
+next_scene_path = "res://src/Levels/Level1x3.tscn"
+
+[node name="Label" parent="HBoxContainer/ChangeSceneButton3" index="1"]
+text = "3"
+align = 1
+
+[node name="ChangeSceneButton4" parent="HBoxContainer" instance=ExtResource( 3 )]
+margin_left = 177.0
+margin_right = 232.0
+margin_bottom = 29.0
+size_flags_horizontal = 3
+next_scene_path = "res://src/Levels/Level1x4.tscn"
+
+[node name="Label" parent="HBoxContainer/ChangeSceneButton4" index="1"]
+text = "4"
+align = 1
+
+[node name="ChangeSceneButton5" parent="HBoxContainer" instance=ExtResource( 3 )]
+margin_left = 236.0
+margin_right = 294.0
+margin_bottom = 29.0
+size_flags_horizontal = 3
+next_scene_path = "res://src/Levels/Level1x5.tscn"
+
+[node name="Label" parent="HBoxContainer/ChangeSceneButton5" index="1"]
+text = "5"
+align = 1
+
+[node name="Back" parent="." instance=ExtResource( 3 )]
+margin_left = 294.713
+margin_top = 211.0
+margin_right = 346.713
+margin_bottom = 236.0
+next_scene_path = "res://src/Screens/MainScreen.tscn"
+
+[node name="Label" parent="Back" index="1"]
+text = "BACK"
+align = 1
+
+[node name="Transition" parent="." instance=ExtResource( 4 )]
+visible = false
+
+[node name="AnimationPlayer" parent="Transition" index="0"]
+autoplay = "FadeIn"
+
+[editable path="HBoxContainer/ChangeSceneButton"]
+
+[editable path="HBoxContainer/ChangeSceneButton2"]
+
+[editable path="HBoxContainer/ChangeSceneButton3"]
+
+[editable path="HBoxContainer/ChangeSceneButton4"]
+
+[editable path="HBoxContainer/ChangeSceneButton5"]
+
+[editable path="Back"]
+
+[editable path="Transition"]

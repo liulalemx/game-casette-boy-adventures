@@ -1,0 +1,43 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://ChangeSceneButton.gd" type="Script" id=1]
+[ext_resource path="res://src/UI/MultiButton.png" type="Texture" id=2]
+[ext_resource path="res://src/UI/Evil Empire.otf" type="DynamicFontData" id=3]
+[ext_resource path="res://src/Music and Sound/Sounds/sfx_sounds_button4.wav" type="AudioStream" id=4]
+[ext_resource path="res://src/Music and Sound/Sounds/sfx_sounds_button3.wav" type="AudioStream" id=5]
+
+[sub_resource type="DynamicFont" id=1]
+font_data = ExtResource( 3 )
+
+[node name="ChangeSceneButton" type="TextureButton"]
+margin_right = 51.0
+margin_bottom = 27.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 25.2445, 10.9614 )
+texture = ExtResource( 2 )
+hframes = 3
+
+[node name="Label" type="Label" parent="."]
+margin_left = 5.50833
+margin_top = 3.9441
+margin_right = 45.5083
+margin_bottom = 21.9441
+custom_fonts/font = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Hover" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )
+
+[node name="Click" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+[connection signal="button_down" from="." to="." method="_on_ChangeSceneButton_button_down"]
+[connection signal="button_up" from="." to="." method="_on_ChangeSceneButton_button_up"]
+[connection signal="mouse_entered" from="." to="." method="_on_ChangeSceneButton_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_ChangeSceneButton_mouse_exited"]

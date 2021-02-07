@@ -1,0 +1,84 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://src/Screens/Transition.gd" type="Script" id=1]
+
+[sub_resource type="Shader" id=1]
+code = "shader_type canvas_item;
+render_mode unshaded;
+
+uniform float progress : hint_range(0, 1);
+uniform float diamondPixelSize = 10f;
+
+void fragment() {
+    float xFraction = fract(FRAGCOORD.x / diamondPixelSize);
+    float yFraction = fract(FRAGCOORD.y / diamondPixelSize);
+    
+    float xDistance = abs(xFraction - 0.5);
+    float yDistance = abs(yFraction - 0.5);
+    
+    if (xDistance + yDistance + UV.x + UV.y > progress * 4f) {
+        discard;
+    }
+}"
+
+[sub_resource type="ShaderMaterial" id=2]
+shader = SubResource( 1 )
+shader_param/progress = 1.0
+shader_param/diamondPixelSize = 10.0
+
+[sub_resource type="Animation" id=3]
+resource_name = "FadeIn"
+length = 1.2
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:material:shader_param/progress")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 1.0, 0.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "FadeOut"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:material:shader_param/progress")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 1.0 ]
+}
+
+[node name="Transition" type="ColorRect"]
+material = SubResource( 2 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 1 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/FadeIn = SubResource( 3 )
+anims/FadeOut = SubResource( 4 )

@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/sfx_movement_jump13.wav-917dc0eee2d7b4f33c9738191f045e89.sample"
+
+[deps]
+
+source_file="res://src/Music and Sound/Sounds/sfx_movement_jump13.wav"
+dest_files=[ "res://.import/sfx_movement_jump13.wav-917dc0eee2d7b4f33c9738191f045e89.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

@@ -1,0 +1,79 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://src/UI/Evil Empire.otf" type="DynamicFontData" id=1]
+[ext_resource path="res://src/Actors/Robot/Robot.png" type="Texture" id=2]
+
+[sub_resource type="DynamicFont" id=3]
+size = 12
+font_data = ExtResource( 1 )
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 6.45846
+
+[sub_resource type="Animation" id=2]
+resource_name = "Rotate"
+length = 0.5
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite/Label:text")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = false
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ "A       D", "" ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 0.297303, 0.901249 ),
+"update": 0,
+"values": [ Vector2( 20.3595, 0 ), Vector2( 20.3595, -13.6224 ) ]
+}
+
+[node name="Robot" type="Area2D"]
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 20.3595, 0 )
+texture = ExtResource( 2 )
+hframes = 5
+
+[node name="Label" type="Label" parent="Sprite"]
+margin_left = -36.3595
+margin_top = -10.0
+margin_right = -0.35947
+margin_bottom = 4.0
+rect_scale = Vector2( 0.924602, 1 )
+custom_fonts/font = SubResource( 3 )
+text = "A       D"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( -0.0897446, -3.2308 )
+shape = SubResource( 1 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "Rotate"
+anims/Rotate = SubResource( 2 )

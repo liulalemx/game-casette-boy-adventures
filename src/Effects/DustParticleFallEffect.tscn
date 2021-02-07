@@ -1,0 +1,58 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://src/Effects/FallDustCurve.tres" type="Curve" id=1]
+[ext_resource path="res://src/Effects/DustParticle.png" type="Texture" id=2]
+[ext_resource path="res://src/Effects/DustParticleFallEffect.gd" type="Script" id=3]
+
+[sub_resource type="CurveTexture" id=1]
+curve = ExtResource( 1 )
+
+[sub_resource type="ParticlesMaterial" id=2]
+flag_disable_z = true
+direction = Vector3( -45, -10, 0 )
+spread = 20.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 45.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+scale_curve = SubResource( 1 )
+
+[sub_resource type="CurveTexture" id=3]
+curve = ExtResource( 1 )
+
+[sub_resource type="ParticlesMaterial" id=4]
+flag_disable_z = true
+direction = Vector3( 45, -10, 0 )
+spread = 20.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 45.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+scale_curve = SubResource( 3 )
+
+[node name="DustParticleFallEffect" type="Position2D"]
+script = ExtResource( 3 )
+
+[node name="FallDustParticleLeft" type="Particles2D" parent="."]
+position = Vector2( -14.4002, -0.904985 )
+emitting = false
+amount = 5
+lifetime = 0.3
+one_shot = true
+explosiveness = 0.5
+process_material = SubResource( 2 )
+texture = ExtResource( 2 )
+
+[node name="FallDustParticleRight" type="Particles2D" parent="."]
+position = Vector2( 12.9268, -1.01811 )
+emitting = false
+amount = 5
+lifetime = 0.3
+one_shot = true
+explosiveness = 0.5
+process_material = SubResource( 4 )
+texture = ExtResource( 2 )
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.4
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

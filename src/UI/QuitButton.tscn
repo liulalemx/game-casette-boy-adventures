@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://src/UI/QuitButton.gd" type="Script" id=1]
+[ext_resource path="res://src/UI/QuitButton-sheet.png" type="Texture" id=2]
+[ext_resource path="res://src/Music and Sound/Sounds/sfx_sounds_button4.wav" type="AudioStream" id=3]
+
+[node name="TextureButton" type="TextureButton"]
+margin_right = 70.0
+margin_bottom = 26.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 32.958, 11.5439 )
+texture = ExtResource( 2 )
+hframes = 2
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+[connection signal="button_down" from="." to="." method="_on_TextureButton_button_down"]
+[connection signal="button_up" from="." to="." method="_on_TextureButton_button_up"]

@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://src/UI/ExitLevelButton-sheet.png" type="Texture" id=1]
+[ext_resource path="res://src/UI/ExitLevel.gd" type="Script" id=2]
+
+[node name="ExitLevel" type="TextureButton"]
+margin_top = 39.0
+margin_right = 81.0
+margin_bottom = 74.0
+size_flags_vertical = 3
+script = ExtResource( 2 )
+next_scene_path = "res://src/Levels/World.tscn"
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 39.7214, 16.2858 )
+texture = ExtResource( 1 )
+hframes = 2
+[connection signal="button_down" from="." to="." method="_on_ExitLevel_button_down"]
+[connection signal="button_up" from="." to="." method="_on_ExitLevel_button_up"]
